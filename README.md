@@ -8,9 +8,6 @@ A template repository to create [Bubbletea][bubbletea] apps.
 	- [bubbletea][]
 	- [bubbles][]
 	- [lipgloss][]
-- github actions workflows for build, test, lint and release
-- [GoReleaser][goreleaser] configs
-- [golangci-lint][lint] configs
 
 [bubbletea]: https://github.com/charmbracelet/bubbletea
 [bubbles]: https://github.com/charmbracelet/bubbles
