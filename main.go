@@ -4,18 +4,33 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/charmbracelet/bubbles/help"
 	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/bubbletea-app-template/keys"
+	"github.com/charmbracelet/bubbletea-app-template/styles"
 	"github.com/charmbracelet/lipgloss"
 )
 
 type errMsg error
 
+type state uint8
+
+const (
+	opts state = iota
+	edit
+	// additional states here
+)
+
 type model struct {
 	spinner  spinner.Model
 	quitting bool
 	err      error
+	help     help.Model
+	keys     keys.KeyMap
+	styles   styles.Styles
+	state    state
 }
 
 var quitKeys = key.NewBinding(
