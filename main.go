@@ -38,6 +38,8 @@ var quitKeys = key.NewBinding(
 	key.WithHelp("", "press q to quit"),
 )
 
+var termWidth, termHeight int
+
 func initialModel() model {
 	s := spinner.New()
 	s.Spinner = spinner.Dot
@@ -52,7 +54,10 @@ func (m model) Init() tea.Cmd {
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 
+	case tea.WindowSizeMsg:
+		termWidth, termHeight = msg.Width, msg.Height
 	case tea.KeyMsg:
+
 		if key.Matches(msg, quitKeys) {
 			m.quitting = true
 			return m, tea.Quit
